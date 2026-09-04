@@ -8,117 +8,131 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
-      --cream: #EBD8C9;
-      --sage: #7A9181;
-      --camel: #CDA26D;
-      --bg: #161817;
-      --panel: #1f2321;
-      --panel-inner: #191c1a;
-      --border: #2d3330;
-      --text: #f3efe9;
-      --muted: #9fa39b;
+      --cream-bg: #FAF7F2;
+      --card-bg: #FFFFFF;
+      --card-soft: #F9ECE4;
+      --terracotta: #E99C66;
+      --sage-green: #9EAC88;
+      --dark-text: #2E332F;
+      --muted-text: #737A74;
+      --border-color: #E8E1D7;
     }
-    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    @keyframes pulse-ring { 0%{box-shadow:0 0 0 0 rgba(122,145,129,0.4)} 70%{box-shadow:0 0 0 10px rgba(122,145,129,0)} 100%{box-shadow:0 0 0 0 rgba(122,145,129,0)} }
-    .pulse-dot { animation: pulse-ring 2s infinite; }
+    body {
+      background-color: var(--cream-bg);
+      color: var(--dark-text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    @keyframes pulse-gentle {
+      0% { box-shadow: 0 0 0 0 rgba(158, 172, 136, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(158, 172, 136, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(158, 172, 136, 0); }
+    }
+    .pulse-indicator { animation: pulse-gentle 2s infinite; }
   </style>
 </head>
-<body class="min-h-screen antialiased flex flex-col justify-between">
+<body class="min-h-screen flex flex-col justify-between antialiased">
 
   <div>
+    <!-- Top Aesthetic Accent Bar -->
+    <div class="h-2 w-full" style="background-color: #9EAC88;"></div>
+
     <!-- Top Engineering POC Banner -->
-    <div class="border-b px-4 py-2.5 text-xs" style="background:#222624;border-color:#2d3330;color:#EBD8C9">
+    <div class="px-4 py-2 text-xs border-b" style="background-color: #F9ECE4; border-color: #E8E1D7; color: #2E332F;">
       <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center gap-2">
-          <span class="px-2 py-0.5 rounded font-semibold text-[10px] uppercase tracking-wider" style="background:#7A9181;color:#f3efe9">Enterprise POC</span>
-          <span>Architecture: <strong style="color:#f3efe9">MySQL / MariaDB Production Observability & Performance Tuning</strong></span>
+          <span class="px-2 py-0.5 rounded font-semibold text-[10px] uppercase tracking-wider text-white" style="background-color: #9EAC88;">Interactive POC</span>
+          <span>Architecture: <strong>MySQL / MariaDB Production Observability & Query Optimization</strong></span>
         </div>
-        <div class="text-xs" style="color:#9fa39b">
-          Designed by: <span style="color:#CDA26D" class="font-medium">Senior Database & Reliability Engineer (25y Exp)</span>
+        <div class="text-xs" style="color: #737A74;">
+          Engineered by: <span style="color: #E99C66;" class="font-bold">Senior Database & Reliability Engineer (25y Exp)</span>
         </div>
       </div>
     </div>
 
     <!-- Header / Navbar -->
-    <header class="border-b sticky top-0 z-50 backdrop-blur" style="background:rgba(22,24,23,0.92);border-color:#2d3330">
-      <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+    <header class="border-b sticky top-0 z-50 backdrop-blur" style="background-color: rgba(250, 247, 242, 0.94); border-color: #E8E1D7;">
+      <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg" style="background:#1f2321;border:1px solid #2d3330;color:#CDA26D">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-lg text-white shadow-sm" style="background-color: #9EAC88;">
             <i class="fa-solid fa-database"></i>
           </div>
           <div>
-            <h1 class="text-base font-bold tracking-tight flex items-center gap-2" style="color:#f3efe9">
+            <h1 class="text-base font-bold tracking-tight flex items-center gap-2" style="color: #2E332F;">
               DB Observability & Performance Suite
-              <span class="text-[11px] font-medium px-2 py-0.5 rounded" style="background:#252c28;color:#7A9181;border:1px solid #33403a">Grafana + MySQL Engine</span>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded" style="background-color: #F9ECE4; color: #E99C66; border: 1px solid #E8E1D7;">Grafana + MySQL Engine</span>
             </h1>
-            <p class="text-xs" style="color:#9fa39b">Real-Time Metrics, Slow Query Diagnostics, Index Optimization & Audit</p>
+            <p class="text-xs" style="color: #737A74;">Real-Time Telemetry, Slow Query Diagnostics, Index Optimization & Audit</p>
           </div>
         </div>
 
         <div class="flex items-center gap-3">
-          <button onclick="simulateTrafficSpike()" class="px-3 py-1.5 rounded-lg text-xs font-medium transition-all flex items-center gap-1.5" style="background:#1f2321;border:1px solid #3a423e;color:#CDA26D">
+          <button onclick="simulateTrafficSpike()" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5 shadow-sm" style="background-color: #FFFFFF; border: 1px solid #E8E1D7; color: #E99C66;">
             <i class="fa-solid fa-bolt"></i> Simulate Traffic Spike
           </button>
-          <button id="btn-audit" onclick="runComprehensiveAudit()" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold shadow-sm transition-all flex items-center gap-1.5" style="background:#7A9181;color:#f3efe9">
+          <button id="btn-audit" onclick="runComprehensiveAudit()" class="px-4 py-1.5 rounded-lg text-xs font-semibold text-white shadow-sm transition-all flex items-center gap-1.5" style="background-color: #9EAC88;">
             <i class="fa-solid fa-stethoscope"></i> Run System Audit
           </button>
         </div>
       </div>
     </header>
 
-    <!-- Main Container -->
+    <!-- Main Content Container -->
     <main class="max-w-7xl mx-auto px-4 py-6 space-y-6">
 
       <!-- Top KPI Row -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div class="rounded-xl p-4 shadow" style="background:#1f2321;border:1px solid #2d3330">
-          <div class="text-xs mb-1" style="color:#9fa39b">Throughput (QPS)</div>
-          <div class="text-2xl font-bold font-mono flex items-baseline gap-2" style="color:#f3efe9">
+        <!-- KPI 1 -->
+        <div class="rounded-2xl p-4 shadow-sm border transition-transform hover:-translate-y-0.5" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+          <div class="text-xs font-medium" style="color: #737A74;">Throughput (QPS)</div>
+          <div class="text-2xl font-bold font-mono mt-1 flex items-baseline gap-2" style="color: #2E332F;">
             <span id="kpi-qps">1,420</span>
-            <span class="text-xs font-normal" style="color:#7A9181"><i class="fa-solid fa-arrow-trend-up"></i> +4.2%</span>
+            <span class="text-xs font-semibold" style="color: #9EAC88;"><i class="fa-solid fa-arrow-trend-up"></i> +4.2%</span>
           </div>
-          <div class="text-[11px] mt-1" style="color:#9fa39b">Peak: 2,800 QPS</div>
+          <div class="text-[11px] mt-1" style="color: #737A74;">Peak load: 2,800 QPS</div>
         </div>
 
-        <div class="rounded-xl p-4 shadow" style="background:#1f2321;border:1px solid #2d3330">
-          <div class="text-xs mb-1" style="color:#9fa39b">Buffer Pool Hit Rate</div>
-          <div class="text-2xl font-bold font-mono" style="color:#7A9181">99.42%</div>
-          <div class="text-[11px] mt-1" style="color:#9fa39b">Memory cache efficiency: Optimal</div>
+        <!-- KPI 2 -->
+        <div class="rounded-2xl p-4 shadow-sm border transition-transform hover:-translate-y-0.5" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+          <div class="text-xs font-medium" style="color: #737A74;">Buffer Pool Hit Rate</div>
+          <div class="text-2xl font-bold font-mono mt-1" style="color: #9EAC88;">99.42%</div>
+          <div class="text-[11px] mt-1" style="color: #737A74;">Memory efficiency: Optimal</div>
         </div>
 
-        <div class="rounded-xl p-4 shadow" style="background:#1f2321;border:1px solid #2d3330">
-          <div class="text-xs mb-1" style="color:#9fa39b">Active Connections</div>
-          <div class="text-2xl font-bold font-mono flex items-baseline gap-2" style="color:#f3efe9">
+        <!-- KPI 3 -->
+        <div class="rounded-2xl p-4 shadow-sm border transition-transform hover:-translate-y-0.5" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+          <div class="text-xs font-medium" style="color: #737A74;">Active Connections</div>
+          <div class="text-2xl font-bold font-mono mt-1 flex items-baseline gap-2" style="color: #2E332F;">
             <span id="kpi-conn">42</span>
-            <span class="text-xs font-normal" style="color:#9fa39b">/ 250 max</span>
+            <span class="text-xs font-normal" style="color: #737A74;">/ 250 limit</span>
           </div>
-          <div class="w-full bg-[#191c1a] h-1.5 rounded-full mt-2 overflow-hidden">
-            <div id="bar-conn" class="h-full rounded-full transition-all duration-500" style="width:17%;background:#7A9181"></div>
+          <div class="w-full bg-[#FAF7F2] h-1.5 rounded-full mt-2 overflow-hidden border" style="border-color: #E8E1D7;">
+            <div id="bar-conn" class="h-full rounded-full transition-all duration-500" style="width: 17%; background-color: #9EAC88;"></div>
           </div>
         </div>
 
-        <div class="rounded-xl p-4 shadow" style="background:#1f2321;border:1px solid #2d3330">
-          <div class="text-xs mb-1" style="color:#9fa39b">Replication Lag</div>
-          <div class="text-2xl font-bold font-mono flex items-baseline gap-2" style="color:#CDA26D">
+        <!-- KPI 4 -->
+        <div class="rounded-2xl p-4 shadow-sm border transition-transform hover:-translate-y-0.5" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+          <div class="text-xs font-medium" style="color: #737A74;">Replication Lag</div>
+          <div class="text-2xl font-bold font-mono mt-1 flex items-baseline gap-2" style="color: #E99C66;">
             <span>0.018s</span>
-            <span class="text-xs px-1.5 py-0.5 rounded font-sans" style="background:rgba(122,145,129,0.15);color:#7A9181">Healthy</span>
+            <span class="text-xs px-2 py-0.5 rounded font-sans text-white font-medium" style="background-color: #9EAC88;">Healthy</span>
           </div>
-          <div class="text-[11px] mt-1" style="color:#9fa39b">Secondary node in sync</div>
+          <div class="text-[11px] mt-1" style="color: #737A74;">Replica in sync</div>
         </div>
       </div>
 
       <!-- Navigation Tabs -->
-      <div class="flex items-center space-x-2 border-b pb-3 overflow-x-auto text-xs" style="border-color:#2d3330">
-        <button onclick="switchView('view-dash')" id="tab-dash" class="px-3.5 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors" style="background:#7A9181;color:#f3efe9">
+      <div class="flex items-center space-x-2 border-b pb-3 overflow-x-auto text-xs" style="border-color: #E8E1D7;">
+        <button onclick="switchView('view-dash')" id="tab-dash" class="px-4 py-2 rounded-xl font-semibold flex items-center gap-2 transition-all shadow-sm text-white" style="background-color: #9EAC88;">
           <i class="fa-solid fa-chart-line"></i> Grafana Live Monitor
         </button>
-        <button onclick="switchView('view-slow')" id="tab-slow" class="px-3.5 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors" style="background:#191c1a;color:#9fa39b;border:1px solid #2d3330">
-          <i class="fa-solid fa-hourglass-half"></i> Slow Query & EXPLAIN Analysis
+        <button onclick="switchView('view-slow')" id="tab-slow" class="px-4 py-2 rounded-xl font-medium flex items-center gap-2 transition-all" style="background-color: #FFFFFF; color: #737A74; border: 1px solid #E8E1D7;">
+          <i class="fa-solid fa-hourglass-half"></i> Slow Query & EXPLAIN
         </button>
-        <button onclick="switchView('view-schema')" id="tab-schema" class="px-3.5 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors" style="background:#191c1a;color:#9fa39b;border:1px solid #2d3330">
+        <button onclick="switchView('view-schema')" id="tab-schema" class="px-4 py-2 rounded-xl font-medium flex items-center gap-2 transition-all" style="background-color: #FFFFFF; color: #737A74; border: 1px solid #E8E1D7;">
           <i class="fa-solid fa-sitemap"></i> Schema & Index Optimizer
         </button>
-        <button onclick="switchView('view-backup')" id="tab-backup" class="px-3.5 py-2 rounded-lg font-medium flex items-center gap-2 transition-colors" style="background:#191c1a;color:#9fa39b;border:1px solid #2d3330">
+        <button onclick="switchView('view-backup')" id="tab-backup" class="px-4 py-2 rounded-xl font-medium flex items-center gap-2 transition-all" style="background-color: #FFFFFF; color: #737A74; border: 1px solid #E8E1D7;">
           <i class="fa-solid fa-shield-halved"></i> Backup & Disaster Recovery
         </button>
       </div>
@@ -127,71 +141,78 @@
       <div id="view-dash" class="tab-content space-y-6">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-          <!-- Left 2 Cols: Real-Time Waveform -->
-          <div class="lg:col-span-2 rounded-xl p-5 shadow space-y-4" style="background:#1f2321;border:1px solid #2d3330">
+          <!-- Left 2 Cols: Live Telemetry Chart -->
+          <div class="lg:col-span-2 rounded-2xl p-6 shadow-sm border space-y-4" style="background-color: #FFFFFF; border-color: #E8E1D7;">
             <div class="flex items-center justify-between">
               <div>
-                <h3 class="text-sm font-bold flex items-center gap-2" style="color:#f3efe9">
-                  <i class="fa-solid fa-wave-square" style="color:#CDA26D"></i> Queries Per Second (QPS) — Real-Time Telemetry
+                <h3 class="text-sm font-bold flex items-center gap-2" style="color: #2E332F;">
+                  <i class="fa-solid fa-wave-square" style="color: #E99C66;"></i> Queries Per Second (QPS) — Real-Time Stream
                 </h3>
-                <p class="text-xs" style="color:#9fa39b">Sampling every 1s from Performance Schema / Exporter</p>
+                <p class="text-xs" style="color: #737A74;">Sampling frequency: 1s from Performance Schema / mysqld_exporter</p>
               </div>
-              <span class="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded-full font-mono" style="background:rgba(122,145,129,0.15);color:#7A9181;border:1px solid rgba(122,145,129,0.3)">
-                <span class="w-2 h-2 rounded-full bg-[#7A9181] pulse-dot"></span> LIVE STREAMING
+              <span class="inline-flex items-center gap-1.5 text-[11px] px-3 py-1 rounded-full font-mono font-medium" style="background-color: #F9ECE4; color: #2E332F; border: 1px solid #E8E1D7;">
+                <span class="w-2 h-2 rounded-full pulse-indicator" style="background-color: #9EAC88;"></span> TELEMETRY ACTIVE
               </span>
             </div>
 
-            <!-- Canvas Waveform -->
-            <div class="relative w-full h-56 rounded-lg p-2 flex items-end overflow-hidden" style="background:#191c1a;border:1px solid #282e2b">
+            <!-- Waveform Canvas -->
+            <div class="relative w-full h-60 rounded-xl p-2 flex items-end overflow-hidden border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
               <canvas id="liveChart" class="w-full h-full"></canvas>
             </div>
 
-            <div class="grid grid-cols-3 gap-3 pt-2 text-center text-xs font-mono" style="color:#9fa39b">
-              <div class="rounded p-2" style="background:#191c1a">Avg Latency: <strong style="color:#7A9181">2.4ms</strong></div>
-              <div class="rounded p-2" style="background:#191c1a">p95 Latency: <strong style="color:#CDA26D">8.1ms</strong></div>
-              <div class="rounded p-2" style="background:#191c1a">p99 Latency: <strong style="color:#EBD8C9">18.5ms</strong></div>
+            <div class="grid grid-cols-3 gap-3 pt-2 text-center text-xs font-mono" style="color: #737A74;">
+              <div class="rounded-xl p-2.5 border" style="background-color: #FAF7F2; border-color: #E8E1D7;">Avg Latency: <strong style="color: #9EAC88;">2.4ms</strong></div>
+              <div class="rounded-xl p-2.5 border" style="background-color: #FAF7F2; border-color: #E8E1D7;">p95 Latency: <strong style="color: #E99C66;">8.1ms</strong></div>
+              <div class="rounded-xl p-2.5 border" style="background-color: #FAF7F2; border-color: #E8E1D7;">p99 Latency: <strong style="color: #2E332F;">18.5ms</strong></div>
             </div>
           </div>
 
-          <!-- Right 1 Col: Query Distribution & Engine Stats -->
+          <!-- Right 1 Col: Engine Status & Breakdown -->
           <div class="space-y-6">
-            <div class="rounded-xl p-5 shadow space-y-4" style="background:#1f2321;border:1px solid #2d3330">
-              <h3 class="text-sm font-bold flex items-center gap-2" style="color:#f3efe9">
-                <i class="fa-solid fa-pie-chart" style="color:#7A9181"></i> Query Type Breakdown
+            <!-- Query Distribution -->
+            <div class="rounded-2xl p-6 shadow-sm border space-y-4" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+              <h3 class="text-sm font-bold flex items-center gap-2" style="color: #2E332F;">
+                <i class="fa-solid fa-pie-chart" style="color: #9EAC88;"></i> Workload Breakdown
               </h3>
-              <div class="space-y-2.5 text-xs font-mono">
+              <div class="space-y-3 text-xs font-mono">
                 <div>
-                  <div class="flex justify-between mb-1"><span style="color:#f3efe9">SELECT (Read)</span><span style="color:#7A9181">78.5%</span></div>
-                  <div class="w-full bg-[#191c1a] h-2 rounded-full overflow-hidden"><div class="h-full bg-[#7A9181]" style="width:78.5%"></div></div>
+                  <div class="flex justify-between mb-1"><span style="color: #2E332F;">SELECT (Read)</span><span style="color: #9EAC88;" class="font-bold">78.5%</span></div>
+                  <div class="w-full bg-[#FAF7F2] h-2 rounded-full overflow-hidden border" style="border-color: #E8E1D7;">
+                    <div class="h-full rounded-full" style="width: 78.5%; background-color: #9EAC88;"></div>
+                  </div>
                 </div>
                 <div>
-                  <div class="flex justify-between mb-1"><span style="color:#f3efe9">UPDATE / INSERT (Write)</span><span style="color:#CDA26D">16.2%</span></div>
-                  <div class="w-full bg-[#191c1a] h-2 rounded-full overflow-hidden"><div class="h-full bg-[#CDA26D]" style="width:16.2%"></div></div>
+                  <div class="flex justify-between mb-1"><span style="color: #2E332F;">UPDATE / INSERT (Write)</span><span style="color: #E99C66;" class="font-bold">16.2%</span></div>
+                  <div class="w-full bg-[#FAF7F2] h-2 rounded-full overflow-hidden border" style="border-color: #E8E1D7;">
+                    <div class="h-full rounded-full" style="width: 16.2%; background-color: #E99C66;"></div>
+                  </div>
                 </div>
                 <div>
-                  <div class="flex justify-between mb-1"><span style="color:#f3efe9">TRANSACTIONS (Commit/Rollback)</span><span style="color:#EBD8C9">5.3%</span></div>
-                  <div class="w-full bg-[#191c1a] h-2 rounded-full overflow-hidden"><div class="h-full bg-[#EBD8C9]" style="width:5.3%"></div></div>
+                  <div class="flex justify-between mb-1"><span style="color: #2E332F;">TRANSACTIONS (Commit/Rollback)</span><span style="color: #737A74;" class="font-bold">5.3%</span></div>
+                  <div class="w-full bg-[#FAF7F2] h-2 rounded-full overflow-hidden border" style="border-color: #E8E1D7;">
+                    <div class="h-full rounded-full" style="width: 5.3%; background-color: #737A74;"></div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- Health Status Card -->
-            <div class="rounded-xl p-5 shadow space-y-3" style="background:#1f2321;border:1px solid #2d3330">
-              <h3 class="text-sm font-bold flex items-center gap-2" style="color:#f3efe9">
-                <i class="fa-solid fa-bell" style="color:#CDA26D"></i> Active Alert Rules (Prometheus/Grafana)
+            <!-- Health Alerts -->
+            <div class="rounded-2xl p-6 shadow-sm border space-y-3" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+              <h3 class="text-sm font-bold flex items-center gap-2" style="color: #2E332F;">
+                <i class="fa-solid fa-bell" style="color: #E99C66;"></i> Alert Rules (Prometheus & Grafana)
               </h3>
               <div class="space-y-2 text-xs">
-                <div class="flex items-center justify-between p-2 rounded" style="background:#191c1a">
-                  <span>Slow Query Spike (>500ms)</span>
-                  <span class="text-[11px] px-2 py-0.5 rounded font-mono" style="background:rgba(122,145,129,0.15);color:#7A9181">OK</span>
+                <div class="flex items-center justify-between p-2.5 rounded-xl border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
+                  <span style="color: #2E332F;">Slow Query Surge (>500ms)</span>
+                  <span class="text-[11px] px-2 py-0.5 rounded font-mono font-medium text-white" style="background-color: #9EAC88;">OK</span>
                 </div>
-                <div class="flex items-center justify-between p-2 rounded" style="background:#191c1a">
-                  <span>Connection Pool Saturation (>85%)</span>
-                  <span class="text-[11px] px-2 py-0.5 rounded font-mono" style="background:rgba(122,145,129,0.15);color:#7A9181">OK (17%)</span>
+                <div class="flex items-center justify-between p-2.5 rounded-xl border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
+                  <span style="color: #2E332F;">Pool Saturation (>85%)</span>
+                  <span class="text-[11px] px-2 py-0.5 rounded font-mono font-medium text-white" style="background-color: #9EAC88;">OK (17%)</span>
                 </div>
-                <div class="flex items-center justify-between p-2 rounded" style="background:#191c1a">
-                  <span>Disk Storage I/O Utilization</span>
-                  <span class="text-[11px] px-2 py-0.5 rounded font-mono" style="background:rgba(122,145,129,0.15);color:#7A9181">OK (41%)</span>
+                <div class="flex items-center justify-between p-2.5 rounded-xl border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
+                  <span style="color: #2E332F;">Disk IOPS Utilization</span>
+                  <span class="text-[11px] px-2 py-0.5 rounded font-mono font-medium text-white" style="background-color: #9EAC88;">OK (41%)</span>
                 </div>
               </div>
             </div>
@@ -202,86 +223,86 @@
 
       <!-- VIEW 2: Slow Query & EXPLAIN -->
       <div id="view-slow" class="tab-content hidden space-y-6">
-        <div class="rounded-xl p-5 shadow space-y-4" style="background:#1f2321;border:1px solid #2d3330">
+        <div class="rounded-2xl p-6 shadow-sm border space-y-4" style="background-color: #FFFFFF; border-color: #E8E1D7;">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 class="text-sm font-bold flex items-center gap-2" style="color:#f3efe9">
-                <i class="fa-solid fa-triangle-exclamation" style="color:#CDA26D"></i> Captured Slow Queries & Execution Plans
+              <h3 class="text-sm font-bold flex items-center gap-2" style="color: #2E332F;">
+                <i class="fa-solid fa-triangle-exclamation" style="color: #E99C66;"></i> Captured Slow Queries & Execution Plans
               </h3>
-              <p class="text-xs" style="color:#9fa39b">Click any query below to inspect EXPLAIN execution tree and recommended indexes</p>
+              <p class="text-xs" style="color: #737A74;">Click any query row below to drill down into the EXPLAIN tree and recommended composite indexes</p>
             </div>
-            <div class="text-xs font-mono" style="color:#7A9181">
-              <i class="fa-solid fa-check"></i> Slow Query Log: ON (long_query_time = 0.5s)
+            <div class="text-xs font-mono font-medium" style="color: #9EAC88;">
+              <i class="fa-solid fa-check"></i> Slow Query Log: ON (threshold = 0.50s)
             </div>
           </div>
 
-          <!-- Table of Slow Queries -->
-          <div class="overflow-x-auto rounded-lg" style="border:1px solid #2d3330">
+          <!-- Table -->
+          <div class="overflow-x-auto rounded-xl border" style="border-color: #E8E1D7;">
             <table class="w-full text-left text-xs">
-              <thead style="background:#191c1a;color:#9fa39b" class="font-mono uppercase">
+              <thead class="font-mono uppercase" style="background-color: #FAF7F2; color: #737A74;">
                 <tr>
-                  <th class="p-3">Query Pattern / Schema</th>
-                  <th class="p-3">Avg Duration</th>
-                  <th class="p-3">Rows Scanned</th>
-                  <th class="p-3">Execution Cost</th>
+                  <th class="p-3">Query Pattern / Target Schema</th>
+                  <th class="p-3">Avg Latency</th>
+                  <th class="p-3">Rows Examined</th>
+                  <th class="p-3">Risk Level</th>
                   <th class="p-3">Action</th>
                 </tr>
               </thead>
-              <tbody class="divide-y font-mono" style="divide-color:#2d3330;background:#1b1e1c;color:#EBD8C9">
-                <tr class="hover:bg-[#232825] cursor-pointer" onclick="showExplain(1)">
+              <tbody class="divide-y font-mono" style="divide-color: #E8E1D7;">
+                <tr class="hover:bg-[#FAF7F2] cursor-pointer transition-colors" onclick="showExplain(1)">
                   <td class="p-3">
-                    <div class="font-bold" style="color:#f3efe9">SELECT * FROM orders WHERE status='PENDING' ORDER BY created_at DESC;</div>
-                    <div class="text-[11px]" style="color:#9fa39b">table: orders | index scan: NONE (Full Table Scan)</div>
+                    <div class="font-bold" style="color: #2E332F;">SELECT * FROM orders WHERE status='PENDING' ORDER BY created_at DESC;</div>
+                    <div class="text-[11px]" style="color: #737A74;">table: orders | index scan: NONE (Full Table Scan)</div>
                   </td>
-                  <td class="p-3" style="color:#CDA26D">1,480 ms</td>
-                  <td class="p-3 text-rose-400">842,010</td>
-                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px]" style="background:rgba(225,29,72,0.15);color:#f43f5e">HIGH RISK</span></td>
-                  <td class="p-3"><span class="underline" style="color:#7A9181">Inspect Plan</span></td>
+                  <td class="p-3 font-semibold" style="color: #E99C66;">1,480 ms</td>
+                  <td class="p-3 font-bold text-rose-500">842,010</td>
+                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-rose-50 text-rose-600 border border-rose-200 font-sans font-semibold">HIGH RISK</span></td>
+                  <td class="p-3"><span class="underline font-semibold" style="color: #9EAC88;">Inspect Plan</span></td>
                 </tr>
 
-                <tr class="hover:bg-[#232825] cursor-pointer" onclick="showExplain(2)">
+                <tr class="hover:bg-[#FAF7F2] cursor-pointer transition-colors" onclick="showExplain(2)">
                   <td class="p-3">
-                    <div class="font-bold" style="color:#f3efe9">SELECT u.id, COUNT(t.id) FROM users u LEFT JOIN transactions t ON u.id=t.user_id GROUP BY u.id;</div>
-                    <div class="text-[11px]" style="color:#9fa39b">table: transactions | missing compound index on (user_id, status)</div>
+                    <div class="font-bold" style="color: #2E332F;">SELECT u.id, COUNT(t.id) FROM users u LEFT JOIN transactions t ON u.id=t.user_id GROUP BY u.id;</div>
+                    <div class="text-[11px]" style="color: #737A74;">table: transactions | missing compound index on (user_id, status)</div>
                   </td>
-                  <td class="p-3" style="color:#CDA26D">920 ms</td>
-                  <td class="p-3" style="color:#CDA26D">315,400</td>
-                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px]" style="background:rgba(205,162,109,0.15);color:#CDA26D">MODERATE</span></td>
-                  <td class="p-3"><span class="underline" style="color:#7A9181">Inspect Plan</span></td>
+                  <td class="p-3 font-semibold" style="color: #E99C66;">920 ms</td>
+                  <td class="p-3 font-semibold" style="color: #E99C66;">315,400</td>
+                  <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] bg-amber-50 text-amber-700 border border-amber-200 font-sans font-semibold">MODERATE</span></td>
+                  <td class="p-3"><span class="underline font-semibold" style="color: #9EAC88;">Inspect Plan</span></td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <!-- Interactive EXPLAIN Drill-Down Box -->
-          <div id="explain-box" class="rounded-xl p-4 space-y-3" style="background:#181b19;border:1px solid #333d38">
-            <div class="flex items-center justify-between text-xs pb-2 border-b" style="border-color:#2d3330">
-              <span class="font-bold flex items-center gap-2" style="color:#CDA26D">
-                <i class="fa-solid fa-code"></i> EXPLAIN Query Execution Plan (Visualized)
+          <div id="explain-box" class="rounded-2xl p-5 space-y-3 border" style="background-color: #F9ECE4; border-color: #E8E1D7;">
+            <div class="flex items-center justify-between text-xs pb-2 border-b" style="border-color: #E8E1D7;">
+              <span class="font-bold flex items-center gap-2" style="color: #2E332F;">
+                <i class="fa-solid fa-code" style="color: #E99C66;"></i> EXPLAIN Query Execution Plan (Visualized)
               </span>
-              <span class="text-[11px] font-mono" style="color:#9fa39b">Database: MariaDB 10.11 / InnoDB</span>
+              <span class="text-[11px] font-mono" style="color: #737A74;">Engine: MariaDB 10.11 / InnoDB</span>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono">
               <div class="space-y-2">
-                <div style="color:#9fa39b">Query Plan Breakdown:</div>
-                <div class="p-3 rounded space-y-1" style="background:#131514;border:1px solid #282e2b;color:#f3efe9">
-                  <div>• <span style="color:#9fa39b">select_type:</span> SIMPLE</div>
-                  <div>• <span style="color:#9fa39b">table:</span> orders</div>
-                  <div>• <span style="color:#f43f5e;font-weight:bold">type: ALL (Full Table Scan detected!)</span></div>
-                  <div>• <span style="color:#9fa39b">possible_keys:</span> NULL</div>
-                  <div>• <span style="color:#f43f5e">rows: 842,010 (100% of table examined)</span></div>
-                  <div>• <span style="color:#CDA26D">Extra: Using where; Using filesort</span></div>
+                <div class="font-semibold" style="color: #737A74;">Execution Plan Breakdown:</div>
+                <div class="p-3.5 rounded-xl space-y-1 bg-white border" style="border-color: #E8E1D7; color: #2E332F;">
+                  <div>• <span style="color: #737A74;">select_type:</span> SIMPLE</div>
+                  <div>• <span style="color: #737A74;">table:</span> orders</div>
+                  <div>• <span class="text-rose-600 font-bold">type: ALL (Full Table Scan detected!)</span></div>
+                  <div>• <span style="color: #737A74;">possible_keys:</span> NULL</div>
+                  <div>• <span class="text-rose-600 font-semibold">rows: 842,010 (100% of data scanned)</span></div>
+                  <div>• <span style="color: #E99C66;">Extra: Using where; Using filesort</span></div>
                 </div>
               </div>
 
               <div class="space-y-2">
-                <div style="color:#7A9181;font-weight:bold"><i class="fa-solid fa-lightbulb"></i> Recommended Senior DBA Fix:</div>
-                <div class="p-3 rounded space-y-2" style="background:#131514;border:1px solid #282e2b">
-                  <p class="text-[11px]" style="color:#EBD8C9">Add composite index on <code class="text-[#7A9181]">(status, created_at)</code> to satisfy filtering and avoid filesort completely:</p>
-                  <pre class="p-2 rounded text-[11px] overflow-x-auto" style="background:#1e2420;color:#7A9181">CREATE INDEX idx_orders_status_created 
+                <div style="color: #9EAC88;" class="font-bold"><i class="fa-solid fa-lightbulb"></i> Recommended Senior DBA Fix:</div>
+                <div class="p-3.5 rounded-xl space-y-2 bg-white border" style="border-color: #E8E1D7;">
+                  <p class="text-[11px]" style="color: #2E332F;">Add composite index on <code class="px-1 py-0.5 rounded font-bold" style="background-color: #F9ECE4; color: #E99C66;">(status, created_at)</code> to satisfy filtering and avoid filesort completely:</p>
+                  <pre class="p-2.5 rounded-lg text-[11px] overflow-x-auto border" style="background-color: #FAF7F2; border-color: #E8E1D7; color: #2E332F;">CREATE INDEX idx_orders_status_created 
 ON orders (status, created_at DESC);</pre>
-                  <p class="text-[11px]" style="color:#9fa39b">⚡ Expected Result: Scan drops from <strong>842,010 rows</strong> to <strong>~120 rows</strong>. Latency drops from <strong>1.48s ➔ 4ms</strong>.</p>
+                  <p class="text-[11px]" style="color: #737A74;">⚡ Expected Result: Scan drops from <strong>842,010 rows</strong> to <strong>~120 rows</strong>. Latency drops from <strong>1.48s ➔ 4ms</strong>.</p>
                 </div>
               </div>
             </div>
@@ -293,48 +314,48 @@ ON orders (status, created_at DESC);</pre>
       <!-- VIEW 3: Schema & Index Optimizer -->
       <div id="view-schema" class="tab-content hidden space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="rounded-xl p-5 shadow space-y-3" style="background:#1f2321;border:1px solid #2d3330">
-            <div class="text-xs" style="color:#9fa39b">Database Schema Health Score</div>
-            <div class="text-3xl font-bold font-mono" style="color:#7A9181">94 / 100</div>
-            <p class="text-xs" style="color:#9fa39b">1 minor redundant index detected across 38 relational tables.</p>
+          <div class="rounded-2xl p-6 shadow-sm border space-y-2" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+            <div class="text-xs font-medium" style="color: #737A74;">Database Schema Health Score</div>
+            <div class="text-3xl font-bold font-mono" style="color: #9EAC88;">94 / 100</div>
+            <p class="text-xs" style="color: #737A74;">1 redundant index detected across 38 relational tables.</p>
           </div>
 
-          <div class="rounded-xl p-5 shadow space-y-3" style="background:#1f2321;border:1px solid #2d3330">
-            <div class="text-xs" style="color:#9fa39b">Table Fragmentation Rate</div>
-            <div class="text-3xl font-bold font-mono" style="color:#CDA26D">3.2%</div>
-            <p class="text-xs" style="color:#9fa39b">Well within healthy threshold (< 10%). No OPTIMIZE TABLE needed yet.</p>
+          <div class="rounded-2xl p-6 shadow-sm border space-y-2" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+            <div class="text-xs font-medium" style="color: #737A74;">Table Fragmentation Rate</div>
+            <div class="text-3xl font-bold font-mono" style="color: #E99C66;">3.2%</div>
+            <p class="text-xs" style="color: #737A74;">Within safe bounds (< 10%). No OPTIMIZE TABLE needed yet.</p>
           </div>
 
-          <div class="rounded-xl p-5 shadow space-y-3" style="background:#1f2321;border:1px solid #2d3330">
-            <div class="text-xs" style="color:#9fa39b">Unused / Redundant Indexes</div>
-            <div class="text-3xl font-bold font-mono" style="color:#EBD8C9">1 Index</div>
-            <p class="text-xs" style="color:#9fa39b">Can be safely pruned to save write I/O on INSERT operations.</p>
+          <div class="rounded-2xl p-6 shadow-sm border space-y-2" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+            <div class="text-xs font-medium" style="color: #737A74;">Unused / Redundant Indexes</div>
+            <div class="text-3xl font-bold font-mono" style="color: #2E332F;">1 Index</div>
+            <p class="text-xs" style="color: #737A74;">Can be pruned to save write I/O on INSERT operations.</p>
           </div>
         </div>
 
-        <div class="rounded-xl p-5 shadow space-y-4" style="background:#1f2321;border:1px solid #2d3330">
-          <h3 class="text-sm font-bold" style="color:#f3efe9">
-            <i class="fa-solid fa-list-check" style="color:#7A9181"></i> Automated Index & Schema Audit Recommendations
+        <div class="rounded-2xl p-6 shadow-sm border space-y-4" style="background-color: #FFFFFF; border-color: #E8E1D7;">
+          <h3 class="text-sm font-bold" style="color: #2E332F;">
+            <i class="fa-solid fa-list-check" style="color: #9EAC88;"></i> Schema & Index Governance Audit
           </h3>
           <div class="space-y-3 text-xs font-mono">
-            <div class="p-3 rounded flex items-center justify-between" style="background:#191c1a;border:1px solid #2d3330">
+            <div class="p-3.5 rounded-xl flex items-center justify-between border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
               <div>
-                <span class="font-bold text-[#f3efe9]">users.idx_email_created</span> 
-                <span class="text-xs ml-2 text-rose-400">[Redundant]</span>
-                <div class="text-[11px] text-[#9fa39b] mt-0.5">Covered by primary unique key `idx_users_email`. Pruning recommended.</div>
+                <span class="font-bold text-[#2E332F]">users.idx_email_created</span> 
+                <span class="text-xs ml-2 text-rose-500">[Redundant]</span>
+                <div class="text-[11px] text-[#737A74] mt-0.5">Covered by primary unique index `idx_users_email`. Safe pruning candidate.</div>
               </div>
-              <button onclick="alert('Safe DDL Script generated: ALTER TABLE users DROP INDEX idx_email_created;')" class="px-2.5 py-1 rounded text-xs" style="background:#252d29;color:#7A9181;border:1px solid #36443c">
+              <button onclick="alert('Safe DDL Script: ALTER TABLE users DROP INDEX idx_email_created;')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border bg-white shadow-sm" style="border-color: #E8E1D7; color: #9EAC88;">
                 Generate DDL
               </button>
             </div>
 
-            <div class="p-3 rounded flex items-center justify-between" style="background:#191c1a;border:1px solid #2d3330">
+            <div class="p-3.5 rounded-xl flex items-center justify-between border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
               <div>
-                <span class="font-bold text-[#f3efe9]">audit_logs.created_at</span> 
-                <span class="text-xs ml-2 text-[#7A9181]">[Partitioning Ready]</span>
-                <div class="text-[11px] text-[#9fa39b] mt-0.5">Table size > 25 GB. Recommended monthly RANGE partitioning by year/month.</div>
+                <span class="font-bold text-[#2E332F]">audit_logs.created_at</span> 
+                <span class="text-xs ml-2 font-bold" style="color: #9EAC88;">[Partitioning Ready]</span>
+                <div class="text-[11px] text-[#737A74] mt-0.5">Table size > 25 GB. Recommended monthly RANGE partitioning by year/month.</div>
               </div>
-              <button onclick="alert('Partitioning strategy documented in runbook.')" class="px-2.5 py-1 rounded text-xs" style="background:#252d29;color:#7A9181;border:1px solid #36443c">
+              <button onclick="alert('Partitioning strategy documented in runbook.')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border bg-white shadow-sm" style="border-color: #E8E1D7; color: #9EAC88;">
                 View Strategy
               </button>
             </div>
@@ -344,40 +365,42 @@ ON orders (status, created_at DESC);</pre>
 
       <!-- VIEW 4: Backup & Recovery -->
       <div id="view-backup" class="tab-content hidden space-y-6">
-        <div class="rounded-xl p-5 shadow space-y-4" style="background:#1f2321;border:1px solid #2d3330">
+        <div class="rounded-2xl p-6 shadow-sm border space-y-4" style="background-color: #FFFFFF; border-color: #E8E1D7;">
           <div class="flex items-center justify-between">
-            <h3 class="text-sm font-bold flex items-center gap-2" style="color:#f3efe9">
-              <i class="fa-solid fa-clock-rotate-left" style="color:#7A9181"></i> Automated Snapshot & Transaction Log Backups
+            <h3 class="text-sm font-bold flex items-center gap-2" style="color: #2E332F;">
+              <i class="fa-solid fa-clock-rotate-left" style="color: #9EAC88;"></i> Disaster Recovery & Backup Integrity
             </h3>
-            <span class="text-xs px-2.5 py-1 rounded font-mono" style="background:rgba(122,145,129,0.15);color:#7A9181">RPO: 5 min | RTO: < 15 min</span>
+            <span class="text-xs px-3 py-1 rounded-full font-mono font-medium border" style="background-color: #F9ECE4; border-color: #E8E1D7; color: #2E332F;">
+              RPO: 5 min | RTO: &lt; 15 min
+            </span>
           </div>
 
           <div class="space-y-3 text-xs font-mono">
-            <div class="p-3 rounded flex items-center justify-between" style="background:#191c1a;border:1px solid #2d3330">
+            <div class="p-4 rounded-xl flex items-center justify-between border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
               <div class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-base" style="color:#7A9181"></i>
+                <i class="fa-solid fa-circle-check text-lg" style="color: #9EAC88;"></i>
                 <div>
-                  <div class="font-bold" style="color:#f3efe9">Full Daily Snapshot (mysqldump / xtrabackup)</div>
-                  <div class="text-[11px]" style="color:#9fa39b">Size: 42.8 GB | SHA256 Verified | Target: Encrypted S3 Bucket</div>
+                  <div class="font-bold" style="color: #2E332F;">Full Daily Snapshot (mysqldump / xtrabackup)</div>
+                  <div class="text-[11px]" style="color: #737A74;">Size: 42.8 GB | SHA256 Checksum Verified | Destination: S3 Encrypted Glacier</div>
                 </div>
               </div>
               <div class="text-right">
-                <div style="color:#7A9181">PASSED</div>
-                <div class="text-[11px]" style="color:#9fa39b">Today at 02:00 UTC</div>
+                <div class="font-bold" style="color: #9EAC88;">PASSED</div>
+                <div class="text-[11px]" style="color: #737A74;">Today 02:00 UTC</div>
               </div>
             </div>
 
-            <div class="p-3 rounded flex items-center justify-between" style="background:#191c1a;border:1px solid #2d3330">
+            <div class="p-4 rounded-xl flex items-center justify-between border" style="background-color: #FAF7F2; border-color: #E8E1D7;">
               <div class="flex items-center gap-3">
-                <i class="fa-solid fa-circle-check text-base" style="color:#7A9181"></i>
+                <i class="fa-solid fa-circle-check text-lg" style="color: #9EAC88;"></i>
                 <div>
-                  <div class="font-bold" style="color:#f3efe9">Continuous Binary Log Streaming (Point-In-Time Recovery)</div>
-                  <div class="text-[11px]" style="color:#9fa39b">Binlog lag: 12 seconds | Retention: 14 days</div>
+                  <div class="font-bold" style="color: #2E332F;">Continuous Binary Log Streaming (Point-in-Time Recovery)</div>
+                  <div class="text-[11px]" style="color: #737A74;">Binlog replay lag: 12 seconds | Retention: 14 days</div>
                 </div>
               </div>
               <div class="text-right">
-                <div style="color:#7A9181">STREAMING</div>
-                <div class="text-[11px]" style="color:#9fa39b">Active</div>
+                <div class="font-bold" style="color: #9EAC88;">STREAMING</div>
+                <div class="text-[11px]" style="color: #737A74;">Active</div>
               </div>
             </div>
           </div>
@@ -388,7 +411,7 @@ ON orders (status, created_at DESC);</pre>
   </div>
 
   <!-- Footer -->
-  <footer class="border-t py-4 text-center text-xs mt-12" style="background:#1a1c1b;border-color:#2d3330;color:#9fa39b">
+  <footer class="border-t py-4 text-center text-xs mt-12" style="background-color: #FAF7F2; border-color: #E8E1D7; color: #737A74;">
     Database Observability POC — Engineered for High Availability, Clean Governance & Deterministic Performance.
   </footer>
 
@@ -404,7 +427,6 @@ ON orders (status, created_at DESC);</pre>
 
   <!-- Interactive JavaScript -->
   <script>
-    // Tab Switching
     function switchView(viewId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
       document.getElementById(viewId).classList.remove('hidden');
@@ -414,18 +436,17 @@ ON orders (status, created_at DESC);</pre>
         const btn = document.getElementById(t);
         const isActive = t === 'tab-' + viewId.replace('view-', '');
         if (isActive) {
-          btn.style.background = '#7A9181';
-          btn.style.color = '#f3efe9';
+          btn.style.backgroundColor = '#9EAC88';
+          btn.style.color = '#FFFFFF';
           btn.style.border = 'none';
         } else {
-          btn.style.background = '#191c1a';
-          btn.style.color = '#9fa39b';
-          btn.style.border = '1px solid #2d3330';
+          btn.style.backgroundColor = '#FFFFFF';
+          btn.style.color = '#737A74';
+          btn.style.border = '1px solid #E8E1D7';
         }
       });
     }
 
-    // Dynamic Live Waveform Canvas
     const canvas = document.getElementById('liveChart');
     const ctx = canvas.getContext('2d');
     let points = Array.from({length: 40}, () => Math.floor(Math.random() * 30) + 70);
@@ -441,10 +462,10 @@ ON orders (status, created_at DESC);</pre>
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const step = canvas.width / (points.length - 1);
 
-      // Draw Gradient Fill
+      // Cream to Soft Terracotta / Sage Gradient
       const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      grad.addColorStop(0, 'rgba(122, 145, 129, 0.35)');
-      grad.addColorStop(1, 'rgba(122, 145, 129, 0.0)');
+      grad.addColorStop(0, 'rgba(158, 172, 136, 0.45)');
+      grad.addColorStop(1, 'rgba(249, 236, 228, 0.05)');
 
       ctx.beginPath();
       ctx.moveTo(0, canvas.height - (points[0] / 150) * canvas.height);
@@ -458,7 +479,7 @@ ON orders (status, created_at DESC);</pre>
       ctx.fillStyle = grad;
       ctx.fill();
 
-      // Draw Stroke Line
+      // Stroke Line
       ctx.beginPath();
       ctx.moveTo(0, canvas.height - (points[0] / 150) * canvas.height);
       for (let i = 1; i < points.length; i++) {
@@ -466,7 +487,7 @@ ON orders (status, created_at DESC);</pre>
         const y = canvas.height - (points[i] / 150) * canvas.height;
         ctx.lineTo(x, y);
       }
-      ctx.strokeStyle = '#7A9181';
+      ctx.strokeStyle = '#9EAC88';
       ctx.lineWidth = 2.5;
       ctx.stroke();
     }
@@ -480,7 +501,6 @@ ON orders (status, created_at DESC);</pre>
       document.getElementById('kpi-qps').textContent = Math.floor(next * 14.5).toLocaleString();
     }, 1000);
 
-    // Simulate Spike
     function simulateTrafficSpike() {
       for(let i = 0; i < 10; i++) {
         points[points.length - 1 - i] = Math.floor(Math.random() * 20) + 125;
@@ -489,20 +509,19 @@ ON orders (status, created_at DESC);</pre>
       document.getElementById('kpi-qps').textContent = '2,740';
       document.getElementById('kpi-conn').textContent = '198';
       document.getElementById('bar-conn').style.width = '79%';
-      document.getElementById('bar-conn').style.background = '#CDA26D';
+      document.getElementById('bar-conn').style.backgroundColor = '#E99C66';
       setTimeout(() => {
         document.getElementById('kpi-conn').textContent = '42';
         document.getElementById('bar-conn').style.width = '17%';
-        document.getElementById('bar-conn').style.background = '#7A9181';
+        document.getElementById('bar-conn').style.backgroundColor = '#9EAC88';
       }, 3500);
     }
 
-    // Run Audit
     function runComprehensiveAudit() {
       const btn = document.getElementById('btn-audit');
       btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Auditing Engine...';
       setTimeout(() => {
-        btn.innerHTML = '<i class="fa-solid fa-check text-emerald-400"></i> Audit Complete (Score: 94)';
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Audit Complete (Score: 94)';
         setTimeout(() => {
           btn.innerHTML = '<i class="fa-solid fa-stethoscope"></i> Run System Audit';
         }, 3000);
